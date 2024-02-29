@@ -1,16 +1,30 @@
-import React, { FC } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import styles from "./SearchBtn.module.css";
 
 interface SearchBtnProps {
   placeholder: string;
+  setterFunc: Dispatch<SetStateAction<string>>;
 }
 
-const SearchBtn: FC<SearchBtnProps> = ({ placeholder }) => {
+const SearchBtn = ({ placeholder, setterFunc }: SearchBtnProps) => {
+  const [timeoutId, setTimeoutId]: [any, any] = useState();
+
+  const onChangeHandler = (e: any) => {
+    if (timeoutId) clearTimeout(timeoutId);
+
+    const newTimeoutId = setTimeout(() => {
+      setterFunc(e.target.value);
+    }, 1500);
+
+    setTimeoutId(newTimeoutId);
+  };
+
   return (
     <input
       className={styles.inputField}
       type="text"
       placeholder={placeholder}
+      onChange={onChangeHandler}
     />
   );
 };

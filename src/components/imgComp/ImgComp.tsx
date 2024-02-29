@@ -1,14 +1,13 @@
 import React from "react";
 import styles from "./ImgComp.module.css";
 
-const ImgComp = () => {
-  return (
-    <img
-      src={process.env.PUBLIC_URL + "/dummy_img.jpg"}
-      alt="test"
-      className={styles.image}
-    />
-  );
+interface ImageComponentType {
+  src: string;
+  alt: string;
+}
+
+const ImgComp = ({ src, alt }: ImageComponentType) => {
+  return <img src={src} alt={alt} className={styles.image} />;
 };
 
 export default ImgComp;
