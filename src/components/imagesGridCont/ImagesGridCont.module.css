@@ -1,0 +1,27 @@
+/* Grid */
+.wrapper {
+  width: 100%;
+  display: grid;
+  gap: 6px;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+/* Media querries */
+@media screen and (min-width: 420px) {
+  .wrapper {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .wrapper {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .wrapper {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+}

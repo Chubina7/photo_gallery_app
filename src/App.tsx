@@ -1,8 +1,8 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import History from "./pages/History";
-import Home from "./pages/Home";
+import History from "./pages/historyPage/History";
+import Home from "./pages/homePage/Home";
 
 function App() {
   return (
