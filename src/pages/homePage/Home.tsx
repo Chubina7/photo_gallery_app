@@ -6,10 +6,10 @@ import ImagesGridCont from "../../components/imagesGridCont/ImagesGridCont";
 function Home() {
   return (
     <main className={styles.main}>
-      <div className={styles.wrapper}>
+      <section className={styles.wrapper}>
         <SearchBtn placeholder="ძებნა" /> {/* should pass querry to search */}
         <ImagesGridCont /> {/* should pass data attribute */}
-      </div>
+      </section>
     </main>
   );
 }
