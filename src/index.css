@@ -1,17 +1,37 @@
+/* Variables */
 :root {
   --max-w: 1440px;
 }
 
+/* Reset CSS */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
 }
 
+/* Selector styles */
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: black;
+  background-color: white;
+}
+
+a {
+  text-decoration: none;
+}
+a:visited {
+  color: inherit;
+}
+
+/* NotFound page Styles */
+.notFound {
+  width: 100%;
+  min-height: 100vh;
+  text-align: center;
 }

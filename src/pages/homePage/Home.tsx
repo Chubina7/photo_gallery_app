@@ -1,5 +1,4 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import styles from "./Home.module.css";
 import SearchBtn from "../../components/searchBtn/SearchBtn";
 import ImagesGridCont from "../../components/imagesGridCont/ImagesGridCont";

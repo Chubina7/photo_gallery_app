@@ -1,0 +1,23 @@
+.list {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.navItem {
+  font-size: 18px;
+  font-weight: bold;
+  opacity: 60%;
+}
+
+.navItem:hover {
+  scale: 1.1;
+  opacity: 100%;
+}
+.active {
+  opacity: 100%;
+}
+.active:hover {
+  scale: 1;
+}
