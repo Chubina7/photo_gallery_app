@@ -8,6 +8,12 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
+    <header>
+      <h1>Header</h1>
+    </header>
     <App />
+    <footer>
+      <h1>Footer</h1>
+    </footer>
   </React.StrictMode>
 );
