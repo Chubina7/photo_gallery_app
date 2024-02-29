@@ -16,7 +16,7 @@ function History() {
         </div>
         <div className={styles.content}>
           {/* If any word is selected, show the result; if not, show the message */}
-          {value ? <ImagesGridCont /> : <HistoryMessage />}
+          {value ? <ImagesGridCont data={[]} /> : <HistoryMessage />}
         </div>
       </section>
     </main>

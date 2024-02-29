@@ -2,18 +2,32 @@ import React from "react";
 import styles from "./ImagesGridCont.module.css";
 import ImgComp from "../../components/imgComp/ImgComp";
 
-const ImagesGridCont = () => {
-  // The component should be able to show any data. we just need array of images
+interface ImagesDataType {
+  data: Array<ImageAttributeTypes>;
+}
+
+interface ImageAttributeTypes {
+  id: string;
+  urls: {
+    small: string;
+    full: string;
+  };
+  likes: number;
+  alt_description: string;
+}
+
+const ImagesGridCont = ({ data }: ImagesDataType) => {
   return (
     <section className={styles.wrapper}>
-      {/* Here goes logic to map the resource, which we got from props */}
-      <ImgComp />
-      <ImgComp />
-      <ImgComp />
-      <ImgComp />
-      <ImgComp />
-      <ImgComp />
-      <ImgComp />
+      {data.map((image) => {
+        return (
+          <ImgComp
+            src={image.urls.full}
+            alt={image.alt_description}
+            key={image.id}
+          />
+        );
+      })}
     </section>
   );
 };
