@@ -19,8 +19,7 @@ function History() {
           <WordsGrid /> {/* should pass the active words */}
         </div>
         <div className={styles.content}>
-          {/* If any word is selected, show the result; if not, show the message */}
-          {value ? <ImagesGridCont data={[]} loader /> : <HistoryMessage />}
+          {/* {value ? <ImagesGridCont data={[]} /> : <HistoryMessage />} */}
         </div>
       </section>
     </main>

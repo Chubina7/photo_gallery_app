@@ -1,26 +1,40 @@
-import React from "react";
+import React, { Dispatch, SetStateAction, useEffect, useRef } from "react";
 import styles from "./ImagesGridCont.module.css";
 import ImgComp from "../../components/imgComp/ImgComp";
 
 interface ImagesDataType {
   data: Array<ImageAttributeTypes>;
   loader?: boolean;
+  pageNumSetter: Dispatch<SetStateAction<number>>;
 }
 
 interface ImageAttributeTypes {
-  id: string;
   urls: {
     small: string;
     full: string;
-    raw: string;
-    small_s3: string;
-    thumb: string;
   };
   likes: number;
   alt_description: string;
 }
 
-const ImagesGridCont = ({ data, loader }: ImagesDataType) => {
+const ImagesGridCont = ({ data, loader, pageNumSetter }: ImagesDataType) => {
+  useEffect(() => {
+    const scrollHandler = () => {
+      const { scrollTop, scrollHeight, clientHeight } =
+        document.documentElement;
+
+      if (scrollTop + clientHeight >= scrollHeight) {
+        pageNumSetter((prev) => (prev = prev + 1));
+      }
+    };
+
+    window.addEventListener("scroll", scrollHandler);
+
+    return () => {
+      window.removeEventListener("scroll", scrollHandler);
+    };
+  }, []);
+
   return (
     <>
       {data.length < 1 && !loader && (
@@ -29,12 +43,12 @@ const ImagesGridCont = ({ data, loader }: ImagesDataType) => {
         </p>
       )}
       <section className={styles.wrapper}>
-        {data.map((image) => {
+        {data.map((image, index) => {
           return (
             <ImgComp
               src={image.urls.small}
               alt={image.alt_description}
-              key={image.id}
+              key={index}
             />
           );
         })}
