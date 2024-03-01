@@ -16,7 +16,6 @@ import ImagesGridCont from "../../components/imagesGridCont/ImagesGridCont";
 //       "turned-off-laptop-computer-on-top-of-brown-wooden-table-VWcPlbHglYc",
 //   },
 // ];
-const test = "some value"
 
 function Home() {
   // State
