@@ -48,7 +48,7 @@ function Home() {
   console.log("2 ერორი:", error);
   console.log("3 ლოდინი:", isLoading);
   console.log("4 საძიებო სიტყვა:", query);
-
+  // ეს დავამატე სხვა კომპიუტერიდან სატესტოდ
   return (
     <main className={styles.main}>
       <section className={styles.wrapper}>
