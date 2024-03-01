@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import styles from "./SearchBtn.module.css";
 
 interface SearchBtnProps {
@@ -14,7 +14,7 @@ const SearchBtn = ({ placeholder, setterFunc }: SearchBtnProps) => {
 
     const newTimeoutId = setTimeout(() => {
       setterFunc(e.target.value);
-    }, 1500);
+    }, 1000);
 
     setTimeoutId(newTimeoutId);
   };

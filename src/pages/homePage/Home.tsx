@@ -3,8 +3,6 @@ import styles from "./Home.module.css";
 import SearchBtn from "../../components/searchBtn/SearchBtn";
 import ImagesGridCont from "../../components/imagesGridCont/ImagesGridCont";
 
-// "https://api.unsplash.com/photos/?per_page=20&order_by=popular&client_id=Ur3JOXAAIn0nGWObufOD2QZ3yisLr0L0HjrU7z6dNTo"
-
 const DUMMY_DATA = [
   {
     id: "test",
@@ -20,34 +18,44 @@ const DUMMY_DATA = [
 ];
 
 function Home() {
-  const [error, setError] = useState(null);
+  // State
+  const [error, setError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
   const [query, setQuery] = useState("");
 
+  // Side effects
   useEffect(() => {
-    // fetch(
-    //   `https://api.unsplash.com/search/photos/?per_page=20&order_by=popular&query=${query}&client_id=Ur3JOXAAIn0nGWObufOD2QZ3yisLr0L0HjrU7z6dNTo`
-    // )
-    //   .then((res) => res.json())
-    //   .then((data) => setData(data.results))
-    //   .catch((err) => setError(err));
-    //
-    // should add context to store querry words
-    //
+    setIsLoading(true);
+    fetch(
+      `https://api.unsplash.com/search/photos/?per_page=20&order_by=popular&query=${query}&client_id=Ur3JOXAAIn0nGWObufOD2QZ3yisLr0L0HjrU7z6dNTo`
+    )
+      .then((res) => {
+        if (!res.ok) {
+          setError(true);
+          setIsLoading(false);
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setData(data.results);
+        setError(false);
+        setIsLoading(false);
+      });
   }, [query]);
 
-  console.log(data);
+  console.log("1 მონაცემები:", data);
+  console.log("2 ერორი:", error);
+  console.log("3 ლოდინი:", isLoading);
+  console.log("4 საძიებო სიტყვა:", query);
 
   return (
     <main className={styles.main}>
       <section className={styles.wrapper}>
         <SearchBtn placeholder="ძებნა" setterFunc={setQuery} />
-        {DUMMY_DATA.length > 0 && !error ? (
-          <ImagesGridCont data={DUMMY_DATA} />
-        ) : (
-          <p>Something went wrong</p>
-        )}
-        {/* {error && error} */}
+        {data && <ImagesGridCont data={data} loader={isLoading} />}
+        {isLoading && <p className={styles.message}>Loading...</p>}
+        {error && <p className={styles.message}>Something went wrong!</p>}
       </section>
     </main>
   );
