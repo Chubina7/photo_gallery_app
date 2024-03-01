@@ -3,19 +3,20 @@ import styles from "./Home.module.css";
 import SearchBtn from "../../components/searchBtn/SearchBtn";
 import ImagesGridCont from "../../components/imagesGridCont/ImagesGridCont";
 
-const DUMMY_DATA = [
-  {
-    id: "test",
-    urls: {
-      full: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?crop=entropy&cs=srgb&fm=jpg&ixid=M3w1NzMwNzN8MHwxfHNlYXJjaHwxfHxvZmZpY2V8ZW58MHx8MXx8MTcwOTIyMTgzNXww&ixlib=rb-4.0.3&q=85",
-      small:
-        "https://images.unsplash.com/photo-1497215728101-856f4ea42174?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1NzMwNzN8MHwxfHNlYXJjaHwxfHxvZmZpY2V8ZW58MHx8MXx8MTcwOTIyMTgzNXww&ixlib=rb-4.0.3&q=80&w=400",
-    },
-    likes: 12,
-    alt_description:
-      "turned-off-laptop-computer-on-top-of-brown-wooden-table-VWcPlbHglYc",
-  },
-];
+// const DUMMY_DATA = [
+//   {
+//     id: "test",
+//     urls: {
+//       full: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?crop=entropy&cs=srgb&fm=jpg&ixid=M3w1NzMwNzN8MHwxfHNlYXJjaHwxfHxvZmZpY2V8ZW58MHx8MXx8MTcwOTIyMTgzNXww&ixlib=rb-4.0.3&q=85",
+//       small:
+//         "https://images.unsplash.com/photo-1497215728101-856f4ea42174?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1NzMwNzN8MHwxfHNlYXJjaHwxfHxvZmZpY2V8ZW58MHx8MXx8MTcwOTIyMTgzNXww&ixlib=rb-4.0.3&q=80&w=400",
+//     },
+//     likes: 12,
+//     alt_description:
+//       "turned-off-laptop-computer-on-top-of-brown-wooden-table-VWcPlbHglYc",
+//   },
+// ];
+const test = "some value"
 
 function Home() {
   // State
