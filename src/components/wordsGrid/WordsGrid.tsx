@@ -10,10 +10,13 @@ const DUMMY_WORDS = [
   "office",
 ];
 
-const WordsGrid = () => {
+interface WordsGridTypes {
+  test?: boolean;
+}
+
+const WordsGrid = ({ test }: WordsGridTypes) => {
   return (
     <div className={styles.wordsGrid}>
-      {/* Should map array of words, which comes from props */}
       {DUMMY_WORDS.map((word, index) => {
         return (
           <p key={index} className={styles.word}>
