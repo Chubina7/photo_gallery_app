@@ -14,15 +14,30 @@ function Home() {
     <main className={styles.main}>
       <section className={styles.wrapper}>
         <SearchBtn placeholder="ძებნა" setterFunc={setQuery} />
-        {data && (
+        {/* {data && (
           <ImagesGridCont
             data={data}
             loader={isLoading}
             pageNumSetter={setPageNums}
           />
-        )}
-        {isLoading && <p className={styles.message}>Loading...</p>}
-        {error && <p className={styles.message}>Something went wrong!</p>}
+        )} */}
+        <ImagesGridCont
+          data={[
+            {
+              urls: {
+                small: "string",
+                full: "string",
+              },
+              likes: 123,
+              alt_description: "string",
+            },
+          ]}
+          pageNumSetter={() => {}}
+          key={0}
+          loader
+        />
+        {/* {isLoading && <p className={styles.message}>Loading...</p>} */}
+        {/* {error && <p className={styles.message}>Something went wrong!</p>} */}
       </section>
     </main>
   );
