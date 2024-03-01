@@ -26,23 +26,22 @@ function Home() {
 
   // Side effects
   useEffect(() => {
-    // setIsLoading(true);
-    // fetch(
-    //   `https://api.unsplash.com/search/photos/?per_page=20&order_by=popular&query=${query}&client_id=Ur3JOXAAIn0nGWObufOD2QZ3yisLr0L0HjrU7z6dNTo`
-    // )
-    //   .then((res) => {
-    //     console.log(" - - - ლოგი ფეტჩ ფუნქციიდან - - - ");
-    //     if (!res.ok) {
-    //       setError(true);
-    //       setIsLoading(false);
-    //     }
-    //     return res.json();
-    //   })
-    //   .then((data) => {
-    //     setData(data.results);
-    //     setError(false);
-    //     setIsLoading(false);
-    //   });
+    setIsLoading(true);
+    fetch(
+      `https://api.unsplash.com/search/photos/?per_page=20&order_by=popular&query=${query}&client_id=Ur3JOXAAIn0nGWObufOD2QZ3yisLr0L0HjrU7z6dNTo`
+    )
+      .then((res) => {
+        if (!res.ok) {
+          setError(true);
+          setIsLoading(false);
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setData(data.results);
+        setError(false);
+        setIsLoading(false);
+      });
   }, [query]);
 
   console.log("1 მონაცემები:", data);
