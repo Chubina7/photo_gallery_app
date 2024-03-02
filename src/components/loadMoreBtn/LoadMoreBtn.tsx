@@ -1,15 +1,16 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import styles from "./LoadMoreBtn.module.css";
 
-interface LoadMoreBtnTypes {
-  newPagesNumSetter: any;
-}
-const LoadMoreBtn = ({ newPagesNumSetter }: LoadMoreBtnTypes) => {
+const LoadMoreBtn = ({
+  numSetter,
+}: {
+  numSetter: Dispatch<SetStateAction<number>>;
+}) => {
   return (
     <button
       className={styles.btn}
       onClick={() => {
-        newPagesNumSetter((prev: number): number => (prev = prev + 1));
+        numSetter((prev: number): number => (prev = prev + 1));
       }}
     >
       LOAD MORE

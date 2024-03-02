@@ -1,16 +1,15 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import styles from "./ImgComp.module.css";
+import { ImageComponentsTypes } from "../../types/interfaces";
 
-interface ImageCompType {
-  id: string;
-  src: string;
-  alt: string;
-  idSetter: any;
-  modalToggler: any;
-}
-
-const ImgComp = ({ id, src, alt, modalToggler, idSetter }: ImageCompType) => {
-  const action = () => {
+const ImgComp = ({
+  id,
+  src,
+  alt,
+  modalToggler,
+  idSetter,
+}: ImageComponentsTypes) => {
+  const action = (): void => {
     idSetter(id);
     modalToggler(true);
   };

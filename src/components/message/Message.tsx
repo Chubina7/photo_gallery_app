@@ -1,12 +1,6 @@
 import React from "react";
 import styles from "./Message.module.css";
-import { ImageAttributeTypes } from "../imagesGridCont/ImagesGridCont";
-
-interface MessageProps {
-  data: ImageAttributeTypes[];
-  isLoading: boolean;
-  error: boolean;
-}
+import { MessageProps } from "../../types/interfaces";
 
 const Message = ({ isLoading, error, data }: MessageProps) => {
   if (isLoading) {

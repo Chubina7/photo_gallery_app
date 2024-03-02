@@ -1,11 +1,7 @@
-import React, { Dispatch, SetStateAction, useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import styles from "./SearchBtn.module.css";
 import { WordsHistoryContext } from "../../context/wordsHistoryProvider/WordsHistoryProvider";
-
-interface SearchBtnProps {
-  querySetterFunc: Dispatch<SetStateAction<string>>;
-  numSetterFunc: Dispatch<SetStateAction<number>>;
-}
+import { SearchBtnProps } from "../../types/interfaces";
 
 const SearchBtn = ({ querySetterFunc, numSetterFunc }: SearchBtnProps) => {
   const { wordsArr, setWordsArr } = useContext(WordsHistoryContext);
@@ -14,7 +10,7 @@ const SearchBtn = ({ querySetterFunc, numSetterFunc }: SearchBtnProps) => {
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (timeoutId) clearTimeout(timeoutId);
 
-    const newTimeoutId = setTimeout(() => {
+    const newTimeoutId = setTimeout((): void => {
       const inputValue = e.target.value.trim();
 
       if (inputValue === "") return;

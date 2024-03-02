@@ -1,30 +1,17 @@
-import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
+import React, { ReactNode, useState } from "react";
 import styles from "./ImagesGridCont.module.css";
 import ImgComp from "../../components/imgComp/ImgComp";
 import ImgModal from "../imgModal/ImgModal";
 import Bakcdrop from "../backdrop/Bakcdrop";
+import { ImageAttributeTypes } from "../../types/interfaces";
 
-interface ImagesDataType {
-  data: Array<ImageAttributeTypes>;
-}
-
-export interface ImageAttributeTypes {
-  id: string;
-  urls: {
-    small: string;
-    full: string;
-  };
-  likes: number;
-  alt_description: string;
-}
-
-const ImagesGridCont = ({ data }: ImagesDataType) => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+const ImagesGridCont = ({ data }: { data: ImageAttributeTypes[] }) => {
+  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
   const [imgId, setImgId] = useState<string | null>(null);
 
   return (
     <section className={styles.wrapper}>
-      {data.map((image, index) => {
+      {data.map((image: ImageAttributeTypes, index: number): ReactNode => {
         return (
           <ImgComp
             id={image.id}
@@ -38,7 +25,7 @@ const ImagesGridCont = ({ data }: ImagesDataType) => {
       })}
       {modalIsOpen && (
         <>
-          <Bakcdrop action={() => setModalIsOpen(false)} />
+          <Bakcdrop action={(): void => setModalIsOpen(false)} />
           <ImgModal id={imgId} key={Math.random() * Math.random()} />
         </>
       )}

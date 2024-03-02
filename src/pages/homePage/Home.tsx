@@ -15,7 +15,8 @@ const Home = () => {
         <SearchBtn querySetterFunc={setQuery} numSetterFunc={setPageNum} />
         <ImagesGridCont data={data} />
         <Message data={data} error={error} isLoading={isLoading} />
-        {data.length > 0 && <LoadMoreBtn newPagesNumSetter={setPageNum} />}
+        {data.length > 0 && <LoadMoreBtn numSetter={setPageNum} />}
+        {/* Must add: თუ მთლიანი დატას ბოლოში გავედით, და მეტი აღარ იფეტჩება, უნდა გაქრეს load more ღილაკი */}
       </section>
     </main>
   );

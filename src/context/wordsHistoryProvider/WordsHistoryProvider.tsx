@@ -1,18 +1,16 @@
-import React, { createContext, useState } from "react";
+import React, { ReactNode, createContext, useState } from "react";
+import { WordsHistoryCtxTypes } from "../../types/interfaces";
 
-// Type definition
-interface CtxTypes {
-  wordsArr: string[];
-  setWordsArr: React.Dispatch<React.SetStateAction<string[]>>;
-}
-
-// Context
-export const WordsHistoryContext = createContext<CtxTypes>({
+export const WordsHistoryContext = createContext<WordsHistoryCtxTypes>({
   wordsArr: [],
   setWordsArr: () => {},
 });
 
-const WordsHistoryProvider = ({ children }: any) => {
+const WordsHistoryProvider = ({
+  children,
+}: {
+  children: ReactNode;
+}): ReactNode => {
   const [wordsArr, setWordsArr] = useState<string[]>(() => {
     const cachedWords = localStorage.getItem("words");
     return cachedWords ? JSON.parse(cachedWords) : [];

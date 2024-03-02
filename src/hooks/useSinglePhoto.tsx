@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 
 const useSinglePhoto = (imgId: string | null) => {
-  const [downloadsNum, setDownloadsNum] = useState();
-  const [fullImage, setFullImage] = useState();
-  const [viewsNum, setViewsNum] = useState();
-  const [likesNum, setLikesNum] = useState();
-  const [altText, setAltText] = useState();
+  const [downloadsNum, setDownloadsNum] = useState<number>();
+  const [viewsNum, setViewsNum] = useState<number>();
+  const [likesNum, setLikesNum] = useState<number>();
+  const [fullImage, setFullImage] = useState<string>();
+  const [altText, setAltText] = useState<string>();
 
   useEffect(() => {
     fetch(
