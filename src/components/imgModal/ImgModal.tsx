@@ -1,15 +1,18 @@
 import React from "react";
 import styles from "./ImgModal.module.css";
+import useSinglePhoto from "../../hooks/useSinglePhoto";
 
-const ImgModal = ({ modalToggler, likes }: any) => {
+const ImgModal = ({ id }: { id: string | null }) => {
+  const { downloadsNum, likesNum, viewsNum, fullImage, altText } =
+    useSinglePhoto(id);
+
   return (
     <>
-      <div
-        className={styles.backdrop}
-        onClick={() => modalToggler(false)}
-      ></div>
       <div className={styles.wrapper}>
-        <h1>test content</h1>
+        <img src={fullImage} alt={altText} className={styles.fullImage} />
+        <p>ჩამწერები: {downloadsNum}</p>
+        <p>მოწონებები: {likesNum}</p>
+        <p>ნახვები: {viewsNum}</p>
       </div>
     </>
   );

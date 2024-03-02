@@ -3,13 +3,15 @@ import styles from "./SearchBtn.module.css";
 import { WordsHistoryContext } from "../../context/wordsHistoryProvider/WordsHistoryProvider";
 
 interface SearchBtnProps {
-  placeholder: string;
   setterFunc: Dispatch<SetStateAction<string>>;
 }
 
-const SearchBtn = ({ placeholder, setterFunc }: SearchBtnProps) => {
+const SearchBtn = ({ setterFunc }: SearchBtnProps) => {
   const { setWordsArr } = useContext(WordsHistoryContext);
-  const [timeoutId, setTimeoutId]: [any, any] = useState();
+  const [timeoutId, setTimeoutId]: [
+    NodeJS.Timeout | undefined,
+    Dispatch<NodeJS.Timeout | undefined>
+  ] = useState();
 
   const onChangeHandler = (e: any) => {
     if (timeoutId) clearTimeout(timeoutId);
@@ -19,7 +21,6 @@ const SearchBtn = ({ placeholder, setterFunc }: SearchBtnProps) => {
       if (value === "") return;
       setterFunc(value);
       setWordsArr((prev) => (prev = [...prev, value]));
-      console.log("<< Value Setted, check HISTORY page >>");
     }, 1000);
 
     setTimeoutId(newTimeoutId);
@@ -29,7 +30,7 @@ const SearchBtn = ({ placeholder, setterFunc }: SearchBtnProps) => {
     <input
       className={styles.inputField}
       type="text"
-      placeholder={placeholder}
+      placeholder="ძებნა"
       onChange={onChangeHandler}
     />
   );

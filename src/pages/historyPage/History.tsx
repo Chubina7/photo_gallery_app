@@ -19,11 +19,11 @@ function History() {
           <WordsGrid wordsArr={wordsArr} key="List of words" />
         </div>
         <div className={styles.content}>
-          {wordsArr.length < 1 ? (
+          {/* {wordsArr.length < 1 ? (
             <ImagesGridCont data={[]} pageNumSetter={() => {}} />
           ) : (
             <HistoryMessage />
-          )}
+          )} */}
         </div>
       </section>
     </main>

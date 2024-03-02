@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
+import { ImageAttributeTypes } from "../components/imagesGridCont/ImagesGridCont";
 
 const usePhoto = (query: string, pageNum: number) => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<ImageAttributeTypes[]>([]);
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  
+
   useEffect(() => {
     setData([]);
   }, [query]);
 
   useEffect(() => {
     setIsLoading(true);
-    setData((prevData) => [...prevData, ...data]);
+    setData((prevData: any) => [...prevData, ...data]);
     setIsLoading(false);
   }, [pageNum]);
 

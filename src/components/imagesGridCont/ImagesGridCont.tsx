@@ -2,15 +2,14 @@ import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import styles from "./ImagesGridCont.module.css";
 import ImgComp from "../../components/imgComp/ImgComp";
 import ImgModal from "../imgModal/ImgModal";
-import LoadMoreBtn from "../loadMoreBtn/LoadMoreBtn";
+import Bakcdrop from "../backdrop/Bakcdrop";
 
 interface ImagesDataType {
   data: Array<ImageAttributeTypes>;
-  loader?: boolean;
-  pageNumSetter: Dispatch<SetStateAction<number>>;
 }
 
-interface ImageAttributeTypes {
+export interface ImageAttributeTypes {
+  id: string;
   urls: {
     small: string;
     full: string;
@@ -19,8 +18,9 @@ interface ImageAttributeTypes {
   alt_description: string;
 }
 
-const ImagesGridCont = ({ data, loader, pageNumSetter }: ImagesDataType) => {
+const ImagesGridCont = ({ data }: ImagesDataType) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [imgId, setImgId] = useState<string | null>(null);
 
   useEffect(() => {
     const scrollHandler = () => {
@@ -35,29 +35,26 @@ const ImagesGridCont = ({ data, loader, pageNumSetter }: ImagesDataType) => {
 
   return (
     <>
-      {data.length < 1 && !loader && (
-        <p className={styles.message}>
-          There's nothing to show. Start searching!
-        </p>
-      )}
       <section className={styles.wrapper}>
         {data.map((image, index) => {
           return (
-            <>
-              <ImgComp
-                src={image.urls.small}
-                alt={image.alt_description}
-                key={Math.random() * Math.random() + index}
-                modalToggler={setModalIsOpen}
-              />
-              {modalIsOpen && (
-                <ImgModal modalToggler={setModalIsOpen} likes={image.likes} />
-              )}
-            </>
+            <ImgComp
+              id={image.id}
+              src={image.urls.small}
+              alt={image.alt_description}
+              key={Math.random() * Math.random() + index + image.id}
+              idSetter={setImgId}
+              modalToggler={setModalIsOpen}
+            />
           );
         })}
+        {modalIsOpen && (
+          <>
+            <Bakcdrop action={() => setModalIsOpen(false)} />
+            <ImgModal id={imgId} key={Math.random() * Math.random()} />
+          </>
+        )}
       </section>
-      {data.length > 0 && <LoadMoreBtn />}
     </>
   );
 };
