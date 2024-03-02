@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "./WordsGrid.module.css";
+import { WordsHistoryContext } from "../../context/wordsHistoryProvider/WordsHistoryProvider";
 
-interface WordsGridTypes {
-  wordsArr: Array<string>;
-}
-
-const WordsGrid = React.memo(({ wordsArr }: WordsGridTypes) => {
+const WordsGrid = React.memo(() => {
+  const { wordsArr } = useContext(WordsHistoryContext);
+  console.log("log", localStorage.getItem("words"));
+  
   return (
     <div className={styles.wordsGrid}>
       {wordsArr.map((word, index) => {

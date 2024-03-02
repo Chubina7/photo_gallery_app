@@ -22,17 +22,6 @@ const ImagesGridCont = ({ data }: ImagesDataType) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [imgId, setImgId] = useState<string | null>(null);
 
-  useEffect(() => {
-    const scrollHandler = () => {
-      const lastItemIsShown = false;
-
-      if (lastItemIsShown) {
-        // pageNumSetter((prev) => (prev = prev + 1));
-        console.log("last item is shown");
-      }
-    };
-  }, []);
-
   return (
     <section className={styles.wrapper}>
       {data.map((image, index) => {

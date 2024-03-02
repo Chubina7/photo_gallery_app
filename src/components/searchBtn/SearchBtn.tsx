@@ -4,11 +4,11 @@ import { WordsHistoryContext } from "../../context/wordsHistoryProvider/WordsHis
 
 interface SearchBtnProps {
   querySetterFunc: Dispatch<SetStateAction<string>>;
-  numSetterFunc: any;
+  numSetterFunc: Dispatch<SetStateAction<number>>;
 }
 
 const SearchBtn = ({ querySetterFunc, numSetterFunc }: SearchBtnProps) => {
-  const { setWordsArr } = useContext(WordsHistoryContext);
+  const { wordsArr, setWordsArr } = useContext(WordsHistoryContext);
   const [timeoutId, setTimeoutId]: [
     NodeJS.Timeout | undefined,
     Dispatch<NodeJS.Timeout | undefined>
@@ -18,11 +18,23 @@ const SearchBtn = ({ querySetterFunc, numSetterFunc }: SearchBtnProps) => {
     if (timeoutId) clearTimeout(timeoutId);
 
     const newTimeoutId = setTimeout(() => {
-      const value = e.target.value.trim(" ");
-      if (value === "") return;
-      querySetterFunc(value);
+      const inputValue = e.target.value.trim(" ");
+      // Validation
+      if (inputValue === "") return;
+      // Home
+      querySetterFunc(inputValue);
       numSetterFunc(1);
-      setWordsArr((prev) => (prev = [...prev, value]));
+      // History Words
+      setWordsArr((prev): any => {
+        if (!wordsArr.includes(inputValue)) {
+          const newWords = [...prev, inputValue];
+          localStorage.setItem("words", JSON.stringify(newWords));
+          return newWords;
+        } else {
+          localStorage.setItem("words", JSON.stringify(prev));
+          return prev;
+        }
+      });
     }, 1000);
 
     setTimeoutId(newTimeoutId);

@@ -1,12 +1,13 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { ImageAttributeTypes } from "../components/imagesGridCont/ImagesGridCont";
 
-const usePhoto = (query: string) => {
+const usePhoto = () => {
   const [data, setData] = useState<ImageAttributeTypes[]>([]);
-  const [error, setError] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [query, setQuery] = useState("");
   const [pageNum, setPageNum]: [number, Dispatch<SetStateAction<number>>] =
     useState(1);
+  const [error, setError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -31,7 +32,7 @@ const usePhoto = (query: string) => {
       });
   }, [query, pageNum]);
 
-  return { data, error, isLoading, pageNum, setPageNum };
+  return { data, error, isLoading, setPageNum, setQuery };
 };
 
 export default usePhoto;
