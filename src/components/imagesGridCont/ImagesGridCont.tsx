@@ -2,6 +2,7 @@ import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import styles from "./ImagesGridCont.module.css";
 import ImgComp from "../../components/imgComp/ImgComp";
 import ImgModal from "../imgModal/ImgModal";
+import LoadMoreBtn from "../loadMoreBtn/LoadMoreBtn";
 
 interface ImagesDataType {
   data: Array<ImageAttributeTypes>;
@@ -20,20 +21,15 @@ interface ImageAttributeTypes {
 
 const ImagesGridCont = ({ data, loader, pageNumSetter }: ImagesDataType) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+
   useEffect(() => {
     const scrollHandler = () => {
-      const { scrollTop, scrollHeight, clientHeight } =
-        document.documentElement;
+      const lastItemIsShown = false;
 
-      if (scrollTop + clientHeight >= scrollHeight) {
-        pageNumSetter((prev) => (prev = prev + 1));
+      if (lastItemIsShown) {
+        // pageNumSetter((prev) => (prev = prev + 1));
+        console.log("last item is shown");
       }
-    };
-
-    window.addEventListener("scroll", scrollHandler);
-
-    return () => {
-      window.removeEventListener("scroll", scrollHandler);
     };
   }, []);
 
@@ -51,7 +47,7 @@ const ImagesGridCont = ({ data, loader, pageNumSetter }: ImagesDataType) => {
               <ImgComp
                 src={image.urls.small}
                 alt={image.alt_description}
-                key={index}
+                key={Math.random() * Math.random() + index}
                 modalToggler={setModalIsOpen}
               />
               {modalIsOpen && (
@@ -61,6 +57,7 @@ const ImagesGridCont = ({ data, loader, pageNumSetter }: ImagesDataType) => {
           );
         })}
       </section>
+      {data.length > 0 && <LoadMoreBtn />}
     </>
   );
 };

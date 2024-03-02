@@ -1,0 +1,13 @@
+.btn {
+  width: 100%;
+  background-color: white;
+  font-size: 18px;
+  border: 1px solid black;
+  padding: 15px 25px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.btn:hover {
+  scale: 1.05;
+  background-color: rgba(224, 224, 224, 0.5);
+}

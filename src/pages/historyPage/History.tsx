@@ -7,8 +7,8 @@ import { WordsHistoryContext } from "../../context/wordsHistoryProvider/WordsHis
 
 function History() {
   const { wordsArr, setWordsArr } = useContext(WordsHistoryContext);
-  const value = false;
 
+  console.log(wordsArr.includes(""));
   console.log(wordsArr);
 
   return (
@@ -16,10 +16,14 @@ function History() {
       <section className={styles.wrapper}>
         <div className={styles.wordsGridWrapper}>
           <h1>Select words to show images</h1>
-          <WordsGrid /> {/* should pass the active words */}
+          <WordsGrid wordsArr={wordsArr} key="List of words" />
         </div>
         <div className={styles.content}>
-          {/* {value ? <ImagesGridCont data={[]} /> : <HistoryMessage />} */}
+          {wordsArr.length < 1 ? (
+            <ImagesGridCont data={[]} pageNumSetter={() => {}} />
+          ) : (
+            <HistoryMessage />
+          )}
         </div>
       </section>
     </main>

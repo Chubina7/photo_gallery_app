@@ -1,23 +1,14 @@
 import React from "react";
 import styles from "./WordsGrid.module.css";
 
-const DUMMY_WORDS = [
-  "meeting",
-  "developers",
-  "transport",
-  "home",
-  "car",
-  "office",
-];
-
 interface WordsGridTypes {
-  test?: boolean;
+  wordsArr: Array<string>;
 }
 
-const WordsGrid = ({ test }: WordsGridTypes) => {
+const WordsGrid = ({ wordsArr }: WordsGridTypes) => {
   return (
     <div className={styles.wordsGrid}>
-      {DUMMY_WORDS.map((word, index) => {
+      {wordsArr.map((word, index) => {
         return (
           <p key={index} className={styles.word}>
             {word}

@@ -1,19 +1,19 @@
 import { createContext, useState } from "react";
 
 // Type definition
-interface testType {
+interface CtxTypes {
   wordsArr: string[];
   setWordsArr: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 // Context
-export const WordsHistoryContext = createContext<testType>({
+export const WordsHistoryContext = createContext<CtxTypes>({
   wordsArr: [],
   setWordsArr: () => {},
 });
 
 const WordsHistoryProvider = ({ children }: any) => {
-  const [wordsArr, setWordsArr] = useState(["t", "e", "s", "t"]);
+  const [wordsArr, setWordsArr] = useState<string[]>([]);
 
   return (
     <WordsHistoryContext.Provider value={{ wordsArr, setWordsArr }}>
