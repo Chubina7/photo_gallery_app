@@ -9,32 +9,25 @@ interface SearchBtnProps {
 
 const SearchBtn = ({ querySetterFunc, numSetterFunc }: SearchBtnProps) => {
   const { wordsArr, setWordsArr } = useContext(WordsHistoryContext);
-  const [timeoutId, setTimeoutId]: [
-    NodeJS.Timeout | undefined,
-    Dispatch<NodeJS.Timeout | undefined>
-  ] = useState();
+  const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | undefined>();
 
-  const onChangeHandler = (e: any) => {
+  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (timeoutId) clearTimeout(timeoutId);
 
     const newTimeoutId = setTimeout(() => {
-      const inputValue = e.target.value.trim(" ");
-      // Validation
+      const inputValue = e.target.value.trim();
+
       if (inputValue === "") return;
-      // Home
-      querySetterFunc(inputValue);
-      numSetterFunc(1);
-      // History Words
-      setWordsArr((prev): any => {
-        if (!wordsArr.includes(inputValue)) {
-          const newWords = [...prev, inputValue];
-          localStorage.setItem("words", JSON.stringify(newWords));
-          return newWords;
-        } else {
-          localStorage.setItem("words", JSON.stringify(prev));
-          return prev;
-        }
-      });
+      if (wordsArr.includes(inputValue)) {
+        console.log("includes");
+      } else {
+        querySetterFunc(inputValue);
+        numSetterFunc(1);
+
+        const newWords = [...wordsArr, inputValue];
+        setWordsArr(newWords);
+        localStorage.setItem("words", JSON.stringify(newWords));
+      }
     }, 1000);
 
     setTimeoutId(newTimeoutId);

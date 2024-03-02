@@ -4,6 +4,7 @@ import SearchBtn from "../../components/searchBtn/SearchBtn";
 import ImagesGridCont from "../../components/imagesGridCont/ImagesGridCont";
 import usePhoto from "../../hooks/usePhoto";
 import LoadMoreBtn from "../../components/loadMoreBtn/LoadMoreBtn";
+import Message from "../../components/message/Message";
 
 const Home = () => {
   const { data, error, isLoading, setPageNum, setQuery } = usePhoto();
@@ -12,17 +13,9 @@ const Home = () => {
     <main className={styles.main}>
       <section className={styles.wrapper}>
         <SearchBtn querySetterFunc={setQuery} numSetterFunc={setPageNum} />
-        {data && <ImagesGridCont data={data} />}
-        {data.length < 1 && !isLoading && (
-          <p className={styles.message}>
-            There's nothing to show. Start searching!
-          </p>
-        )}
-        {isLoading && <p className={styles.message}>Loading...</p>}
-        {error && <p className={styles.message}>Something went wrong!</p>}
-        {data.length > 0 && (
-          <LoadMoreBtn newPagesNumSetter={setPageNum} key={Math.random()} />
-        )}
+        <ImagesGridCont data={data} />
+        <Message data={data} error={error} isLoading={isLoading} />
+        {data.length > 0 && <LoadMoreBtn newPagesNumSetter={setPageNum} />}
       </section>
     </main>
   );
