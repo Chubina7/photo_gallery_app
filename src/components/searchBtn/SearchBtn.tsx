@@ -3,10 +3,11 @@ import styles from "./SearchBtn.module.css";
 import { WordsHistoryContext } from "../../context/wordsHistoryProvider/WordsHistoryProvider";
 
 interface SearchBtnProps {
-  setterFunc: Dispatch<SetStateAction<string>>;
+  querySetterFunc: Dispatch<SetStateAction<string>>;
+  numSetterFunc: any;
 }
 
-const SearchBtn = ({ setterFunc }: SearchBtnProps) => {
+const SearchBtn = ({ querySetterFunc, numSetterFunc }: SearchBtnProps) => {
   const { setWordsArr } = useContext(WordsHistoryContext);
   const [timeoutId, setTimeoutId]: [
     NodeJS.Timeout | undefined,
@@ -19,7 +20,8 @@ const SearchBtn = ({ setterFunc }: SearchBtnProps) => {
     const newTimeoutId = setTimeout(() => {
       const value = e.target.value.trim(" ");
       if (value === "") return;
-      setterFunc(value);
+      querySetterFunc(value);
+      numSetterFunc(1);
       setWordsArr((prev) => (prev = [...prev, value]));
     }, 1000);
 

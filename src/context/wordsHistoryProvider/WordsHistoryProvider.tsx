@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import React, { createContext, useState } from "react";
 
 // Type definition
 interface CtxTypes {
@@ -12,7 +12,7 @@ export const WordsHistoryContext = createContext<CtxTypes>({
   setWordsArr: () => {},
 });
 
-const WordsHistoryProvider = ({ children }: any) => {
+const WordsHistoryProvider = React.memo(({ children }: any) => {
   const [wordsArr, setWordsArr] = useState<string[]>([]);
 
   return (
@@ -20,6 +20,6 @@ const WordsHistoryProvider = ({ children }: any) => {
       {children}
     </WordsHistoryContext.Provider>
   );
-};
+});
 
 export default WordsHistoryProvider;

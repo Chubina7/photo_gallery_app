@@ -2,14 +2,14 @@ import React from "react";
 import styles from "./LoadMoreBtn.module.css";
 
 interface LoadMoreBtnTypes {
-  setNewPagesToShow: any;
+  newPagesNumSetter: any;
 }
-const LoadMoreBtn = ({ setNewPagesToShow }: LoadMoreBtnTypes) => {
+const LoadMoreBtn = ({ newPagesNumSetter }: LoadMoreBtnTypes) => {
   return (
     <button
       className={styles.btn}
       onClick={() => {
-        setNewPagesToShow((prev: number): number => (prev = prev + 1));
+        newPagesNumSetter((prev: number): number => (prev = prev + 1));
       }}
     >
       LOAD MORE

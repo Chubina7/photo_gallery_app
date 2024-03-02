@@ -5,7 +5,7 @@ interface WordsGridTypes {
   wordsArr: Array<string>;
 }
 
-const WordsGrid = ({ wordsArr }: WordsGridTypes) => {
+const WordsGrid = React.memo(({ wordsArr }: WordsGridTypes) => {
   return (
     <div className={styles.wordsGrid}>
       {wordsArr.map((word, index) => {
@@ -17,6 +17,6 @@ const WordsGrid = ({ wordsArr }: WordsGridTypes) => {
       })}
     </div>
   );
-};
+});
 
 export default WordsGrid;

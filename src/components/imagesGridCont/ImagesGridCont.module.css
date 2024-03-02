@@ -4,7 +4,6 @@
   gap: 6px;
   grid-template-columns: repeat(1, 1fr);
 }
-
 /* Media querries */
 @media screen and (min-width: 420px) {
   .wrapper {

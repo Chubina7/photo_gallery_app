@@ -34,28 +34,26 @@ const ImagesGridCont = ({ data }: ImagesDataType) => {
   }, []);
 
   return (
-    <>
-      <section className={styles.wrapper}>
-        {data.map((image, index) => {
-          return (
-            <ImgComp
-              id={image.id}
-              src={image.urls.small}
-              alt={image.alt_description}
-              key={Math.random() * Math.random() + index + image.id}
-              idSetter={setImgId}
-              modalToggler={setModalIsOpen}
-            />
-          );
-        })}
-        {modalIsOpen && (
-          <>
-            <Bakcdrop action={() => setModalIsOpen(false)} />
-            <ImgModal id={imgId} key={Math.random() * Math.random()} />
-          </>
-        )}
-      </section>
-    </>
+    <section className={styles.wrapper}>
+      {data.map((image, index) => {
+        return (
+          <ImgComp
+            id={image.id}
+            src={image.urls.small}
+            alt={image.alt_description}
+            key={Math.random() * Math.random() + index + image.id}
+            idSetter={setImgId}
+            modalToggler={setModalIsOpen}
+          />
+        );
+      })}
+      {modalIsOpen && (
+        <>
+          <Bakcdrop action={() => setModalIsOpen(false)} />
+          <ImgModal id={imgId} key={Math.random() * Math.random()} />
+        </>
+      )}
+    </section>
   );
 };
 

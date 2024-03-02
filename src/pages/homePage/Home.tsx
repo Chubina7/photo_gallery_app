@@ -1,20 +1,18 @@
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { useState } from "react";
 import styles from "./Home.module.css";
 import SearchBtn from "../../components/searchBtn/SearchBtn";
 import ImagesGridCont from "../../components/imagesGridCont/ImagesGridCont";
 import usePhoto from "../../hooks/usePhoto";
 import LoadMoreBtn from "../../components/loadMoreBtn/LoadMoreBtn";
 
-function Home() {
+const Home = () => {
   const [query, setQuery] = useState("");
-  const [pageNums, setPageNums]: [number, Dispatch<SetStateAction<number>>] =
-    useState(1);
-  const { data, error, isLoading } = usePhoto(query, pageNums);
+  const { data, error, isLoading, setPageNum } = usePhoto(query);
 
   return (
     <main className={styles.main}>
       <section className={styles.wrapper}>
-        <SearchBtn setterFunc={setQuery} />
+        <SearchBtn querySetterFunc={setQuery} numSetterFunc={setPageNum} />
         {data.length < 1 && !isLoading && (
           <p className={styles.message}>
             There's nothing to show. Start searching!
@@ -22,13 +20,13 @@ function Home() {
         )}
         {data && <ImagesGridCont data={data} />}
         {data.length > 0 && (
-          <LoadMoreBtn setNewPagesToShow={setPageNums} key={Math.random()} />
+          <LoadMoreBtn newPagesNumSetter={setPageNum} key={Math.random()} />
         )}
         {isLoading && <p className={styles.message}>Loading...</p>}
         {error && <p className={styles.message}>Something went wrong!</p>}
       </section>
     </main>
   );
-}
+};
 
 export default Home;

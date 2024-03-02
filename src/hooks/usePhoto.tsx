@@ -1,20 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { ImageAttributeTypes } from "../components/imagesGridCont/ImagesGridCont";
 
-const usePhoto = (query: string, pageNum: number) => {
+const usePhoto = (query: string) => {
   const [data, setData] = useState<ImageAttributeTypes[]>([]);
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    setData([]);
-  }, [query]);
-
-  useEffect(() => {
-    setIsLoading(true);
-    setData((prevData: any) => [...prevData, ...data]);
-    setIsLoading(false);
-  }, [pageNum]);
+  const [pageNum, setPageNum]: [number, Dispatch<SetStateAction<number>>] =
+    useState(1);
 
   useEffect(() => {
     setIsLoading(true);
@@ -28,13 +20,18 @@ const usePhoto = (query: string, pageNum: number) => {
         }
         return res.json();
       })
-      .then((data) => {
-        setData(data.results);
+      .then((data): any => {
+        const results = data.results;
+        if (pageNum === 1) {
+          setData(results);
+        } else {
+          setData((prevData) => [...prevData, ...results]);
+        }
         setIsLoading(false);
       });
   }, [query, pageNum]);
 
-  return { data, error, isLoading };
+  return { data, error, isLoading, pageNum, setPageNum };
 };
 
 export default usePhoto;
