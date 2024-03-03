@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App";
-import WordsHistoryProvider from "./context/wordsHistoryProvider/WordsHistoryProvider";
 import DataHistoryProvider from "./context/dataHistoryProvider/DataHistoryProvider";
 
 const root = ReactDOM.createRoot(
@@ -14,9 +13,7 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <DataHistoryProvider>
-        <WordsHistoryProvider>
-          <App />
-        </WordsHistoryProvider>
+        <App />
       </DataHistoryProvider>
     </BrowserRouter>
   </React.StrictMode>
