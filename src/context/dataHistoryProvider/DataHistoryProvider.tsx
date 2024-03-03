@@ -1,27 +1,17 @@
-import { createContext, useState } from "react";
-
-export const DataHistoryCtx = createContext({});
+import { ReactNode, createContext, useState } from "react";
 
 interface HistoryDataType {
-  query: {
-    dataKey1: string;
-    dataKey2: string;
-    dataKey3: string;
-  };
+  dataHistoryArr: any[];
+  setDataHistoryArr: React.Dispatch<React.SetStateAction<any[]>>;
 }
 
-const DataHistoryProvider = ({ children }: any) => {
-  const [dataHistoryArr, setDataHistoryArr] = useState<HistoryDataType[]>([]);
+export const DataHistoryCtx = createContext<HistoryDataType>({
+  dataHistoryArr: [],
+  setDataHistoryArr: () => {},
+});
 
-  //   const arr = [
-  //     {
-  //       query: {
-  //         dataKey1: "value1",
-  //         dataKey2: "value2",
-  //         dataKey3: "value3",
-  //       },
-  //     },
-  //   ];
+const DataHistoryProvider = ({ children }: { children: ReactNode }) => {
+  const [dataHistoryArr, setDataHistoryArr] = useState<any[]>([]);
 
   return (
     <DataHistoryCtx.Provider value={{ dataHistoryArr, setDataHistoryArr }}>

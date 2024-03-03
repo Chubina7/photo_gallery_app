@@ -4,17 +4,20 @@ import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import WordsHistoryProvider from "./context/wordsHistoryProvider/WordsHistoryProvider";
+import DataHistoryProvider from "./context/dataHistoryProvider/DataHistoryProvider";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
-// test comment
+
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <WordsHistoryProvider>
-        <App />
-      </WordsHistoryProvider>
+      <DataHistoryProvider>
+        <WordsHistoryProvider>
+          <App />
+        </WordsHistoryProvider>
+      </DataHistoryProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

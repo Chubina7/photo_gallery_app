@@ -6,11 +6,7 @@ export const WordsHistoryContext = createContext<WordsHistoryCtxTypes>({
   setWordsArr: () => {},
 });
 
-const WordsHistoryProvider = ({
-  children,
-}: {
-  children: ReactNode;
-}): ReactNode => {
+const WordsHistoryProvider = ({ children }: { children: ReactNode }) => {
   const [wordsArr, setWordsArr] = useState<string[]>(() => {
     const cachedWords = localStorage.getItem("words");
     return cachedWords ? JSON.parse(cachedWords) : [];
