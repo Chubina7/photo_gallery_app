@@ -1,18 +1,5 @@
 import { ReactNode, createContext, useEffect, useState } from "react";
-import { ImageAttributeTypes } from "../../types/interfaces";
-
-interface historyObjectType {
-  searchedQuery: string;
-  pageNums: number;
-  data: Array<ImageAttributeTypes>;
-}
-
-interface HistoryDataType {
-  dataHistoryArr: Array<historyObjectType>;
-  setDataHistoryArr: React.Dispatch<
-    React.SetStateAction<Array<historyObjectType>>
-  >;
-}
+import { HistoryDataType, historyObjectType } from "../../types/interfaces";
 
 export const DataHistoryCtx = createContext<HistoryDataType>({
   dataHistoryArr: [],

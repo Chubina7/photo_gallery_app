@@ -39,3 +39,15 @@ export interface PhotosArrHookTypes {
     setPageNum: React.Dispatch<React.SetStateAction<number>>;
     setQuery: React.Dispatch<React.SetStateAction<string>>;
 }
+export interface historyObjectType {
+    searchedQuery: string;
+    pageNums: number;
+    data: Array<ImageAttributeTypes>;
+}
+
+export interface HistoryDataType {
+    dataHistoryArr: Array<historyObjectType>;
+    setDataHistoryArr: React.Dispatch<
+        React.SetStateAction<Array<historyObjectType>>
+    >;
+}

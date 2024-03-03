@@ -57,4 +57,7 @@
     text-wrap: nowrap;
     gap: 40px;
   }
+  .wrapper {
+    width: fit-content;
+  }
 }

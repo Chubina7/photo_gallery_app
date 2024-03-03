@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState } from "react";
+import React, { ReactNode, useState } from "react";
 import styles from "./ImagesGridCont.module.css";
 import ImgComp from "../../components/imgComp/ImgComp";
 import ImgModal from "../imgModal/ImgModal";
