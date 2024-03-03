@@ -17,7 +17,7 @@ const Message = ({ isLoading, error, data }: MessageProps) => {
     return (
       <p className={styles.message}>
         There's nothing to show.{" "}
-        {location.pathname === "/" ? "Start searching!" : "Choose one word"}
+        {location.pathname === "/" ? "Start searching!" : "Choose one of the words!"}
       </p>
     );
   }

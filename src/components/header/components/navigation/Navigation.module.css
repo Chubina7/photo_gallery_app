@@ -3,10 +3,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 14px;
 }
 .navItem {
-  font-size: 18px;
+  font-size: 14px;
   font-weight: bold;
   opacity: 60%;
 }
@@ -20,4 +20,13 @@
 }
 .active:hover {
   scale: 1;
+}
+
+@media screen and (min-width: 420px) {
+  .list {
+    gap: 20px;
+  }
+  .navItem {
+    font-size: 18px;
+  }
 }

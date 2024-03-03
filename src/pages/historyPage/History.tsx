@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import styles from "./History.module.css";
 import ImagesGridCont from "../../components/imagesGridCont/ImagesGridCont";
 import WordsGrid from "../../components/wordsGrid/WordsGrid";
@@ -13,7 +13,7 @@ function History() {
     <main className={styles.main}>
       <section className={styles.wrapper}>
         <div className={styles.wordsGridWrapper}>
-          <h1>Select words to show images</h1>
+          <h1 className={styles.heading}>Words that you already searched</h1>
           <WordsGrid querySetterFunc={setQuery} query={query} />
         </div>
         <div className={styles.content}>

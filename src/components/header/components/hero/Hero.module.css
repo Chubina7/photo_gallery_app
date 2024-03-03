@@ -1,0 +1,10 @@
+.unsplash_logo {
+  height: 25px;
+}
+
+.div {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}

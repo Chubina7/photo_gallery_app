@@ -6,9 +6,9 @@ const WordsGrid = React.memo(({ query, querySetterFunc }: any) => {
   const wordsArr = data
     .filter((item: any) => item.searchedQuery.trim().length > 0)
     .map((item: any) => item.searchedQuery);
-  const result = wordsArr.filter(
-    (item: string, index: number) => wordsArr.indexOf(item) === index
-  );
+  const result = wordsArr
+    .filter((item: string, index: number) => wordsArr.indexOf(item) === index)
+    .slice(-16);
 
   const querySetHandler = (e: any) => {
     querySetterFunc(e.target.innerHTML);

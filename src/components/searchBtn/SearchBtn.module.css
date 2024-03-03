@@ -1,16 +1,13 @@
 .inputField {
   width: 100%;
-  font-size: 14px;
-  padding: 6px 16px;
-  border-radius: 4px;
+  font-size: 18px;
+  padding: 8px 24px;
   border: 1px solid black;
-  background-color: rgba(0, 0, 0, 0.066);
+  background-color: rgba(194, 194, 194, 0.205);
 }
 
 @media screen and (min-width: 768px) {
   .inputField {
-    font-size: 18px;
-    padding: 8px 24px;
     max-width: 50%;
   }
 }
