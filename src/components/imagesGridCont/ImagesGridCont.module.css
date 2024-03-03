@@ -3,6 +3,7 @@
   display: grid;
   gap: 6px;
   grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: masonry;
 }
 /* Media querries */
 @media screen and (min-width: 420px) {

@@ -1,6 +1,11 @@
 .image {
   width: 100%;
-  height: inherit;
+  height: 300px;
+  object-fit: cover;
   border-radius: 4px;
   user-select: none;
+}
+.image:hover {
+  scale: 1.05;
+  cursor: pointer;
 }
