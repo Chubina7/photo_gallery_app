@@ -15,20 +15,23 @@
   scale: 1.1;
   cursor: pointer;
 }
-
+.active {
+  opacity: 100%;
+  font-weight: bold;
+}
 /* Media querries */
-@media screen and (min-width: 420px) {
+/* @media screen and (min-width: 420px) {
   .wordsGrid {
-    /* grid-template-columns: repeat(2, 1fr); */
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 @media screen and (min-width: 768px) {
   .wordsGrid {
-    /* grid-template-columns: repeat(3, 1fr); */
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 @media screen and (min-width: 1024px) {
   .wordsGrid {
-    /* grid-template-columns: repeat(4, 1fr); */
+    grid-template-columns: repeat(4, 1fr);
   }
-}
+} */

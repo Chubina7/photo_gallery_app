@@ -23,6 +23,7 @@ const usePhoto = () => {
         return res.json();
       })
       .then((data) => {
+        console.log("Request made");
         if (!data) return;
         const results: ImageAttributeTypes[] = data.results;
         if (pageNum === 1) {
@@ -63,7 +64,7 @@ const usePhoto = () => {
     }
   }, [query]);
 
-  return { data, error, isLoading, setPageNum, setQuery };
+  return { data, error, isLoading, setPageNum, query, setQuery };
 };
 
 export default usePhoto;

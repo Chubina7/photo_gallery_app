@@ -32,3 +32,10 @@ export interface WordsHistoryCtxTypes {
     wordsArr: string[];
     setWordsArr: Dispatch<SetStateAction<string[]>>;
 }
+export interface PhotosArrHookTypes {
+    data: ImageAttributeTypes[];
+    error: boolean;
+    isLoading: boolean;
+    setPageNum: React.Dispatch<React.SetStateAction<number>>;
+    setQuery: React.Dispatch<React.SetStateAction<string>>;
+}
